@@ -1,0 +1,8 @@
+I, [2018-03-23T15:18:35.785368 #13554]  INFO -- Kitchen: -----> Starting Kitchen (v1.20.0)
+W, [2018-03-23T15:18:36.004829 #13554]  WARN -- Kitchen: Running command `terraform version`
+I, [2018-03-23T15:18:36.047736 #13554]  INFO -- Kitchen: Terraform v0.11.5
+I, [2018-03-23T15:18:36.307082 #13554]  INFO -- Kitchen: + provider.aws v1.11.0
+I, [2018-03-23T15:18:36.307156 #13554]  INFO -- Kitchen: 
+W, [2018-03-23T15:18:36.325608 #13554]  WARN -- Kitchen: Terraform v0.11.5 is supported
+I, [2018-03-23T15:18:36.341287 #13554]  INFO -- Kitchen: -----> Destroying <default-aws>...
+I, [2018-03-23T15:18:46.341887 #13554]  INFO -- Kitchen: -----> Kitchen is finished. (0m10.56s)

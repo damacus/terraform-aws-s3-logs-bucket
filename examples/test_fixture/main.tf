@@ -8,3 +8,4 @@ module "logs_bucket" {
     Stack       = "Stack-tag"
   }
 }
+

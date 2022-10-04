@@ -1,11 +1,19 @@
 resource "aws_s3_bucket" "bucket" {
   bucket = var.bucket_name
-  acl    = "private"
+  tags   = var.tags
+}
 
-  lifecycle_rule {
-    id      = "AllLogs"
-    enabled = true
-    prefix  = "/"
+resource "aws_s3_bucket_acl" "example_bucket_acl" {
+  bucket = aws_s3_bucket.bucket.id
+  acl    = "private"
+}
+
+resource "aws_s3_bucket_lifecycle_configuration" "bucket_lifecycle" {
+  bucket = aws_s3_bucket.bucket.id
+
+  rule {
+    id     = "AllLogs"
+    status = "Enabled"
 
     transition {
       days          = var.standard_ia_transition_days
@@ -18,9 +26,15 @@ resource "aws_s3_bucket" "bucket" {
     }
 
     expiration {
-      days = var.expiration
+      days = var.expiration_days
     }
   }
+}
 
-  tags = var.tags
+resource "aws_s3_bucket_versioning" "bucket" {
+  bucket = aws_s3_bucket.bucket.id
+
+  versioning_configuration {
+    status = var.bucket_versioning == true ? "Enabled" : "Disabled"
+  }
 }

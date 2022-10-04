@@ -4,7 +4,7 @@ variable "bucket_name" {
 }
 
 variable "tags" {
-  type        = map
+  type        = map(any)
   description = "A map of tags to add to all resources"
   default     = {}
 }
@@ -12,15 +12,27 @@ variable "tags" {
 # Bucket Life cycle policies
 variable "standard_ia_transition_days" {
   type    = number
-  default = 30
+  default = 90
 }
 
 variable "glacier_transition_days" {
   type    = number
-  default = 60
+  default = 180
 }
 
-variable "expiration" {
+variable "expiration_days" {
   type    = number
-  default = 90
+  default = 365
+}
+
+variable "mfa_delete" {
+  type        = bool
+  default     = false
+  description = "(optional) Enable MFA delete on the bucket"
+}
+
+variable "bucket_versioning" {
+  type        = bool
+  default     = false
+  description = "(optional) Enable versioning on the bucket"
 }
